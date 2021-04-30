@@ -26,51 +26,51 @@ public class Menu extends JFrame implements ActionListener {
 		// A Label
 		JLabel label = new JLabel("Slang Words");
 		label.setForeground(Color.red);
-		label.setFont(new Font("Gill Sans MT", Font.PLAIN, 35));
+		label.setFont(new Font("Gill Sans MT", Font.PLAIN, 36));
 		label.setAlignmentX(CENTER_ALIGNMENT);
 		
 		btn1 = new JButton("1. Danh Sách");
 		btn1.addActionListener(this);
-		btn1.setFont(new Font("Gill Sans MT", Font.PLAIN, 14));
+		btn1.setFont(new Font("Gill Sans MT", Font.PLAIN, 16));
 		btn1.setFocusable(false);
 
 		btn2 = new JButton("2. Tìm Kiếm Theo Slang word");
 		btn2.addActionListener(this);
-		btn2.setFont(new Font("Gill Sans MT", Font.PLAIN, 14));
+		btn2.setFont(new Font("Gill Sans MT", Font.PLAIN, 16));
 		btn2.setFocusable(false);
 
 		btn3 = new JButton("3. Thêm Slang word");
 		btn3.addActionListener(this);
-		btn3.setFont(new Font("Gill Sans MT", Font.PLAIN, 14));
+		btn3.setFont(new Font("Gill Sans MT", Font.PLAIN, 16));
 		btn3.setFocusable(false);
 
 		btn4 = new JButton("4. Random Slang Words");
 		btn4.addActionListener(this);
-		btn4.setFont(new Font("Gill Sans MT", Font.PLAIN, 14));
+		btn4.setFont(new Font("Gill Sans MT", Font.PLAIN, 16));
 		btn4.setFocusable(false);
 
 		btn5 = new JButton("5. Lịch Sử Tìm Kiếm");
 		btn5.addActionListener(this);
-		btn5.setFont(new Font("Gill Sans MT", Font.PLAIN, 14));
+		btn5.setFont(new Font("Gill Sans MT", Font.PLAIN, 16));
 		btn5.setFocusable(false);
 
 		btn6 = new JButton("6. Xóa Slang Word");
 		btn6.addActionListener(this);
-		btn6.setFont(new Font("Gill Sans MT", Font.PLAIN, 14));
+		btn6.setFont(new Font("Gill Sans MT", Font.PLAIN, 16));
 		btn6.setFocusable(false);
 
 		btn7 = new JButton("7. Reset Danh Sách Slang Word Gốc");
 		btn7.addActionListener(this);
-		btn7.setFont(new Font("Gill Sans MT", Font.PLAIN, 14));
+		btn7.setFont(new Font("Gill Sans MT", Font.PLAIN, 16));
 		btn7.setFocusable(false);
 
 		btn8 = new JButton("8. Thoát");
 		btn8.addActionListener(this);
-		btn8.setFont(new Font("Gill Sans MT", Font.PLAIN, 14));
+		btn8.setFont(new Font("Gill Sans MT", Font.PLAIN, 16));
 		btn8.setFocusable(false);
 
 		JPanel panelCenter = new JPanel();
-		panelCenter.setLayout(new GridLayout(3, 3, 10, 10));
+		panelCenter.setLayout(new GridLayout(8, 1));
 		panelCenter.add(btn1);
 		panelCenter.add(btn2);
 		panelCenter.add(btn3);
@@ -107,7 +107,7 @@ public class Menu extends JFrame implements ActionListener {
 		if (e.getSource() == btn1) {
 			this.dispose();
 			try {
-				new ListWFrame();
+				new ListFrame();
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
