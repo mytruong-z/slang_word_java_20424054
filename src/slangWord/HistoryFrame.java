@@ -29,7 +29,7 @@ public class HistoryFrame extends JFrame implements ActionListener {
 
 		JLabel hisLabel = new JLabel();
 		hisLabel.setText("Lịch Sử Tìm Kiếm");
-		hisLabel.setForeground(Color.green);
+		hisLabel.setForeground(Color.blue);
 		hisLabel.setFont(new Font("Georgia Bold", Font.PLAIN, 35));
 		hisLabel.setAlignmentX(CENTER_ALIGNMENT);
 		
@@ -81,8 +81,6 @@ public class HistoryFrame extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnExit) {
-			System.exit(0);
-		} else if (e.getSource() == btnReturn) {
 			this.dispose();
 			new Menu();
 		}

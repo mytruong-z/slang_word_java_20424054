@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class Menu extends JFrame implements ActionListener {
-	JButton btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8;
+	JButton btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn10;
 	SlangReadFile slangWord;
 
 	Menu() {
@@ -80,7 +80,7 @@ public class Menu extends JFrame implements ActionListener {
 		btn3.setFont(new Font("Georgia Bold", Font.PLAIN, 16));
 		btn3.setFocusable(false);
                 
-                btn4 = new JButton("4. Xóa Slang Word");
+                btn4 = new JButton("4. Sửa một Slang Word");
 		btn4.addActionListener(this);
                 btn4.addMouseListener(new MouseAdapter() {
                     Color color = btn4.getForeground();
@@ -94,9 +94,8 @@ public class Menu extends JFrame implements ActionListener {
                  });
 		btn4.setFont(new Font("Georgia Bold", Font.PLAIN, 16));
 		btn4.setFocusable(false);
-
-
-		btn5 = new JButton("5. Lịch Sử Tìm Kiếm");
+                
+                btn5 = new JButton("5. Xóa một Slang Word");
 		btn5.addActionListener(this);
                 btn5.addMouseListener(new MouseAdapter() {
                     Color color = btn5.getForeground();
@@ -110,8 +109,9 @@ public class Menu extends JFrame implements ActionListener {
                  });
 		btn5.setFont(new Font("Georgia Bold", Font.PLAIN, 16));
 		btn5.setFocusable(false);
-                
-                btn6 = new JButton("6. Random Slang Words");
+
+
+		btn6 = new JButton("6. Lịch Sử Tìm Kiếm");
 		btn6.addActionListener(this);
                 btn6.addMouseListener(new MouseAdapter() {
                     Color color = btn6.getForeground();
@@ -125,8 +125,8 @@ public class Menu extends JFrame implements ActionListener {
                  });
 		btn6.setFont(new Font("Georgia Bold", Font.PLAIN, 16));
 		btn6.setFocusable(false);
-
-		btn7 = new JButton("7. Reset Danh Sách Slang Word Gốc");
+                
+                btn7 = new JButton("7. Random Slang Words");
 		btn7.addActionListener(this);
                 btn7.addMouseListener(new MouseAdapter() {
                     Color color = btn7.getForeground();
@@ -141,7 +141,7 @@ public class Menu extends JFrame implements ActionListener {
 		btn7.setFont(new Font("Georgia Bold", Font.PLAIN, 16));
 		btn7.setFocusable(false);
 
-		btn8 = new JButton("8. Thoát");
+		btn8 = new JButton("8. Reset Danh Sách Slang Word Gốc");
 		btn8.addActionListener(this);
                 btn8.addMouseListener(new MouseAdapter() {
                     Color color = btn8.getForeground();
@@ -155,9 +155,39 @@ public class Menu extends JFrame implements ActionListener {
                  });
 		btn8.setFont(new Font("Georgia Bold", Font.PLAIN, 16));
 		btn8.setFocusable(false);
+                
+                btn9 = new JButton("9. Chương Trình Đố Vui");
+		btn9.addActionListener(this);
+                btn9.addMouseListener(new MouseAdapter() {
+                    Color color = btn9.getForeground();
+                    public void mouseEntered(MouseEvent me) {
+                       color = btn9.getForeground();
+                       btn9.setForeground(Color.green);
+                    }
+                    public void mouseExited(MouseEvent me) {
+                       btn9.setForeground(color);
+                    }
+                 });
+		btn9.setFont(new Font("Georgia Bold", Font.PLAIN, 16));
+		btn9.setFocusable(false);
+
+		btn10 = new JButton("10. Thoát");
+		btn10.addActionListener(this);
+                btn10.addMouseListener(new MouseAdapter() {
+                    Color color = btn10.getForeground();
+                    public void mouseEntered(MouseEvent me) {
+                       color = btn10.getForeground();
+                       btn10.setForeground(Color.green);
+                    }
+                    public void mouseExited(MouseEvent me) {
+                       btn10.setForeground(color);
+                    }
+                 });
+		btn10.setFont(new Font("Georgia Bold", Font.PLAIN, 16));
+		btn10.setFocusable(false);
 
 		JPanel panelCenter = new JPanel();
-		panelCenter.setLayout(new GridLayout(8, 1));
+		panelCenter.setLayout(new GridLayout(10, 1));
 		panelCenter.add(btn1);
 		panelCenter.add(btn2);
 		panelCenter.add(btn3);
@@ -166,6 +196,8 @@ public class Menu extends JFrame implements ActionListener {
 		panelCenter.add(btn6);
 		panelCenter.add(btn7);
 		panelCenter.add(btn8);
+                panelCenter.add(btn9);
+                panelCenter.add(btn10);
 
 		Dimension size2 = new Dimension(400, 350);
 		panelCenter.setMaximumSize(size2);
@@ -211,31 +243,38 @@ public class Menu extends JFrame implements ActionListener {
 			new AddSlangWordFrame();
 
 		} else if (e.getSource() == btn4) {
+                        this.dispose();
+                        JOptionPane.showMessageDialog(this, "Chức năng chưa hoàn thành!!!");
+			new Menu();
+
+		} else if (e.getSource() == btn5) {
                     this.dispose();
 			try {
 				new DeleteFrame();
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
-			
-
-		} else if (e.getSource() == btn5) {
-			this.dispose();
-			new HistoryFrame();
 
 		} else if (e.getSource() == btn6) {
-			this.dispose();
-                        JOptionPane.showMessageDialog(this, "Chức năng chưa hoàn thành!!!");
+                        this.dispose();
+			new HistoryFrame();
 		} else if (e.getSource() == btn7) {
+                        this.dispose();
+                        JOptionPane.showMessageDialog(this, "Chức năng chưa hoàn thành!!!");
+                        new Menu();
+		} else if (e.getSource() == btn8) {
 			int n = JOptionPane.showConfirmDialog(this, "Bạn có có chắc muốn reset Slang Word?", "Thoát",
 					JOptionPane.YES_NO_OPTION);
 			if (n == 0) {
 				slangWord.reset();
 				JOptionPane.showMessageDialog(this, "Reset thành công!!!");
 			}
-		} else if (e.getSource() == btn8) {
+		} else if (e.getSource() == btn9) {
 			this.dispose();
-			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                        JOptionPane.showMessageDialog(this, "Chức năng chưa hoàn thành!!!");
+			new Menu();
+		} else if (e.getSource() == btn10) {
+			System.exit(0);
 		}
 	}
 
