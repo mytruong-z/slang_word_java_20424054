@@ -263,7 +263,7 @@ public class Menu extends JFrame implements ActionListener {
                         JOptionPane.showMessageDialog(this, "Chức năng chưa hoàn thành!!!");
                         new Menu();
 		} else if (e.getSource() == btn8) {
-			int n = JOptionPane.showConfirmDialog(this, "Bạn có có chắc muốn reset Slang Word?", "Thoát",
+			int n = JOptionPane.showConfirmDialog(this, "Bạn có có chắc muốn reset Slang Word?", "Message",
 					JOptionPane.YES_NO_OPTION);
 			if (n == 0) {
 				slangWord.reset();

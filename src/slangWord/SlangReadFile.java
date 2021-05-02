@@ -12,6 +12,7 @@ import java.util.Set;
 import java.util.TreeMap;
 
 public class SlangReadFile {
+    //https://www.geeksforgeeks.org/treemap-in-java/
     private TreeMap<String, List<String>> map = new TreeMap<>();
     private static SlangReadFile obj = new SlangReadFile();
     private int stringLength;

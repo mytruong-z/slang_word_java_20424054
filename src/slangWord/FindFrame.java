@@ -137,24 +137,25 @@ public class FindFrame extends JFrame implements ActionListener, TableModelListe
 			if (n == 0) {
 				this.clearTable();
 				temp = slangW.getMeaning(key);
-				result = temp;
-				for (int i = 0; i < result.length; i++) {
-					String ss[] = result[i];
-					model.addRow(ss);
-				}
-
 			} else if (n == 1) {
 				this.clearTable();
 				temp = slangW.findDefinition(key);
-				result = temp;
-				for (int i = 0; i < result.length; i++) {
-					String ss[] = result[i];
-					model.addRow(ss);
-				}
 			}
+                        
+                        result = temp;
+                        if(result != null) {
+                            for (int i = 0; i < result.length; i++) {
+                                String ss[] = result[i];
+                                    model.addRow(ss);
+                            }            
+                        }
+                        
 			try {
-				for (int ii = 0; ii < temp.length; ii++)
-					slangW.saveHistory(temp[ii][1], temp[ii][2]);
+                            if(result != null) {
+                                for (int ii = 0; ii < temp.length; ii++) {
+                                    slangW.saveHistory(temp[ii][1], temp[ii][2]);
+                                }
+                            }
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
