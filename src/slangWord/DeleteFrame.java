@@ -51,7 +51,7 @@ public class DeleteFrame extends JFrame implements ActionListener, ListSelection
 		JPanel panelTable = new JPanel();
 		panelTable.setBackground(Color.black);
 		data = slangW.getData();
-		String column[] = { "#", "Slag", "Ý Nghĩa" };
+		String column[] = { "#", "Slang Word", "Ý Nghĩa" };
                 //https://shareprogramming.net/huong-dan-su-dung-jtable-trong-java-swing/
 		jt = new JTable(new DefaultTableModel(column, 0));
                 JTableHeader header = jt.getTableHeader();

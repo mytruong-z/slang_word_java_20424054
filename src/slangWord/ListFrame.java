@@ -49,7 +49,7 @@ public class ListFrame extends JFrame implements ActionListener, TableModelListe
 		panelTable.setBackground(Color.black);
 		String data[][] = slangW.getData();
 		dataCopy = slangW.getData();
-		String column[] = { "#", "Slag Word", "Ý Nghĩa" };
+		String column[] = { "#", "Slang Word", "Ý Nghĩa" };
 		
                 //https://shareprogramming.net/huong-dan-su-dung-jtable-trong-java-swing/
                 jt = new JTable(data, column);
