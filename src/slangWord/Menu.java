@@ -14,6 +14,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import java.awt.event.*;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -25,48 +26,134 @@ public class Menu extends JFrame implements ActionListener {
 		slangWord = SlangReadFile.getInstance();
 		// A Label
 		JLabel label = new JLabel("Slang Words");
-		label.setForeground(Color.red);
-		label.setFont(new Font("Gill Sans MT", Font.PLAIN, 36));
+		label.setForeground(Color.blue);
+		label.setFont(new Font("Georgia Bold", Font.PLAIN, 36));
 		label.setAlignmentX(CENTER_ALIGNMENT);
+                
+                JLabel author = new JLabel("Trương Thị Ngọc Mỵ - 20424054");
+		author.setForeground(Color.pink);
+		author.setFont(new Font("Georgia Bold", Font.PLAIN, 12));
+		author.setAlignmentX(CENTER_ALIGNMENT);
 		
 		btn1 = new JButton("1. Danh Sách");
 		btn1.addActionListener(this);
-		btn1.setFont(new Font("Gill Sans MT", Font.PLAIN, 16));
+                btn1.addMouseListener(new MouseAdapter() {
+                    Color color = btn1.getForeground();
+                    public void mouseEntered(MouseEvent me) {
+                       color = btn1.getForeground();
+                       btn1.setForeground(Color.green);
+                    }
+                    public void mouseExited(MouseEvent me) {
+                       btn1.setForeground(color);
+                    }
+                 });
+		btn1.setFont(new Font("Georgia Bold", Font.PLAIN, 16));
 		btn1.setFocusable(false);
 
 		btn2 = new JButton("2. Tìm Kiếm Theo Slang word");
 		btn2.addActionListener(this);
-		btn2.setFont(new Font("Gill Sans MT", Font.PLAIN, 16));
+                btn2.addMouseListener(new MouseAdapter() {
+                    Color color = btn2.getForeground();
+                    public void mouseEntered(MouseEvent me) {
+                       color = btn2.getForeground();
+                       btn2.setForeground(Color.green);
+                    }
+                    public void mouseExited(MouseEvent me) {
+                       btn2.setForeground(color);
+                    }
+                 });
+		btn2.setFont(new Font("Georgia Bold", Font.PLAIN, 16));
 		btn2.setFocusable(false);
 
 		btn3 = new JButton("3. Thêm Slang word");
 		btn3.addActionListener(this);
-		btn3.setFont(new Font("Gill Sans MT", Font.PLAIN, 16));
+                btn3.addMouseListener(new MouseAdapter() {
+                    Color color = btn3.getForeground();
+                    public void mouseEntered(MouseEvent me) {
+                       color = btn3.getForeground();
+                       btn3.setForeground(Color.green);
+                    }
+                    public void mouseExited(MouseEvent me) {
+                       btn3.setForeground(color);
+                    }
+                 });
+		btn3.setFont(new Font("Georgia Bold", Font.PLAIN, 16));
 		btn3.setFocusable(false);
-
-		btn4 = new JButton("4. Random Slang Words");
+                
+                btn4 = new JButton("4. Xóa Slang Word");
 		btn4.addActionListener(this);
-		btn4.setFont(new Font("Gill Sans MT", Font.PLAIN, 16));
+                btn4.addMouseListener(new MouseAdapter() {
+                    Color color = btn4.getForeground();
+                    public void mouseEntered(MouseEvent me) {
+                       color = btn4.getForeground();
+                       btn4.setForeground(Color.green);
+                    }
+                    public void mouseExited(MouseEvent me) {
+                       btn4.setForeground(color);
+                    }
+                 });
+		btn4.setFont(new Font("Georgia Bold", Font.PLAIN, 16));
 		btn4.setFocusable(false);
+
 
 		btn5 = new JButton("5. Lịch Sử Tìm Kiếm");
 		btn5.addActionListener(this);
-		btn5.setFont(new Font("Gill Sans MT", Font.PLAIN, 16));
+                btn5.addMouseListener(new MouseAdapter() {
+                    Color color = btn5.getForeground();
+                    public void mouseEntered(MouseEvent me) {
+                       color = btn5.getForeground();
+                       btn5.setForeground(Color.green);
+                    }
+                    public void mouseExited(MouseEvent me) {
+                       btn5.setForeground(color);
+                    }
+                 });
+		btn5.setFont(new Font("Georgia Bold", Font.PLAIN, 16));
 		btn5.setFocusable(false);
-
-		btn6 = new JButton("6. Xóa Slang Word");
+                
+                btn6 = new JButton("6. Random Slang Words");
 		btn6.addActionListener(this);
-		btn6.setFont(new Font("Gill Sans MT", Font.PLAIN, 16));
+                btn6.addMouseListener(new MouseAdapter() {
+                    Color color = btn6.getForeground();
+                    public void mouseEntered(MouseEvent me) {
+                       color = btn6.getForeground();
+                       btn6.setForeground(Color.green);
+                    }
+                    public void mouseExited(MouseEvent me) {
+                       btn6.setForeground(color);
+                    }
+                 });
+		btn6.setFont(new Font("Georgia Bold", Font.PLAIN, 16));
 		btn6.setFocusable(false);
 
 		btn7 = new JButton("7. Reset Danh Sách Slang Word Gốc");
 		btn7.addActionListener(this);
-		btn7.setFont(new Font("Gill Sans MT", Font.PLAIN, 16));
+                btn7.addMouseListener(new MouseAdapter() {
+                    Color color = btn7.getForeground();
+                    public void mouseEntered(MouseEvent me) {
+                       color = btn7.getForeground();
+                       btn7.setForeground(Color.green);
+                    }
+                    public void mouseExited(MouseEvent me) {
+                       btn7.setForeground(color);
+                    }
+                 });
+		btn7.setFont(new Font("Georgia Bold", Font.PLAIN, 16));
 		btn7.setFocusable(false);
 
 		btn8 = new JButton("8. Thoát");
 		btn8.addActionListener(this);
-		btn8.setFont(new Font("Gill Sans MT", Font.PLAIN, 16));
+                btn8.addMouseListener(new MouseAdapter() {
+                    Color color = btn8.getForeground();
+                    public void mouseEntered(MouseEvent me) {
+                       color = btn8.getForeground();
+                       btn8.setForeground(Color.green);
+                    }
+                    public void mouseExited(MouseEvent me) {
+                       btn8.setForeground(color);
+                    }
+                 });
+		btn8.setFont(new Font("Georgia Bold", Font.PLAIN, 16));
 		btn8.setFocusable(false);
 
 		JPanel panelCenter = new JPanel();
@@ -80,22 +167,23 @@ public class Menu extends JFrame implements ActionListener {
 		panelCenter.add(btn7);
 		panelCenter.add(btn8);
 
-		Dimension size2 = new Dimension(600, 500);
+		Dimension size2 = new Dimension(400, 350);
 		panelCenter.setMaximumSize(size2);
 		panelCenter.setPreferredSize(size2);
 		panelCenter.setMinimumSize(size2);
 		Container con = this.getContentPane();
 		con.setLayout(new BoxLayout(con, BoxLayout.Y_AXIS));
-		con.add(Box.createRigidArea(new Dimension(0, 10)));
+		con.add(Box.createRigidArea(new Dimension(0, 15)));
 		con.add(label);
-		con.add(Box.createRigidArea(new Dimension(0, 30)));
+                con.add(author);
+		con.add(Box.createRigidArea(new Dimension(0, 40)));
 		con.add(panelCenter);
 
 		// Setting Frame
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setTitle("Menu Window");
+		this.setTitle("Menu");
 		this.setVisible(true);
-		this.setSize(700, 700);
+		this.setSize(500, 500);
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
 
@@ -103,33 +191,33 @@ public class Menu extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		if (e.getSource() == btn1) {
 			this.dispose();
 			try {
 				new ListFrame();
 			} catch (Exception e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		} else if (e.getSource() == btn2) {
-			System.out.println("Change Actitity");
 			this.dispose();
 			try {
 				new FindFrame();
 			} catch (Exception e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 
 		} else if (e.getSource() == btn3) {
-			// Add a slang word
 			this.dispose();
 			new AddSlangWordFrame();
 
 		} else if (e.getSource() == btn4) {
-			this.dispose();
-			new RandomSlangWordFrame();
+                    this.dispose();
+			try {
+				new DeleteFrame();
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+			
 
 		} else if (e.getSource() == btn5) {
 			this.dispose();
@@ -137,11 +225,7 @@ public class Menu extends JFrame implements ActionListener {
 
 		} else if (e.getSource() == btn6) {
 			this.dispose();
-			try {
-				new DeleteFrame();
-			} catch (Exception e1) {
-				e1.printStackTrace();
-			}
+                        JOptionPane.showMessageDialog(this, "Chức năng chưa hoàn thành!!!");
 		} else if (e.getSource() == btn7) {
 			int n = JOptionPane.showConfirmDialog(this, "Bạn có có chắc muốn reset Slang Word?", "Thoát",
 					JOptionPane.YES_NO_OPTION);
@@ -151,7 +235,7 @@ public class Menu extends JFrame implements ActionListener {
 			}
 		} else if (e.getSource() == btn8) {
 			this.dispose();
-			new QuizFrame();
+			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		}
 	}
 

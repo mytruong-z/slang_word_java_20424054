@@ -25,6 +25,7 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 public class FindFrame extends JFrame implements ActionListener, TableModelListener {
 	JButton btnBack, btnFind;
@@ -45,14 +46,14 @@ public class FindFrame extends JFrame implements ActionListener, TableModelListe
 		JLabel titleLabel = new JLabel();
 		titleLabel.setText("Tìm Kiếm Slang Words");
 		titleLabel.setForeground(Color.blue);
-		titleLabel.setFont(new Font("Gill Sans MT", Font.PLAIN, 35));
+		titleLabel.setFont(new Font("Georgia Bold", Font.PLAIN, 35));
 		titleLabel.setAlignmentX(CENTER_ALIGNMENT);
 
 		// Result Label
 		titleLabel1 = new JLabel();
 		titleLabel1.setText("Nhập slang word bạn muốn tìm nghĩa ");
 		titleLabel1.setForeground(Color.black);
-		titleLabel1.setFont(new Font("Gill Sans MT", Font.PLAIN, 18));
+		titleLabel1.setFont(new Font("Georgia Bold", Font.PLAIN, 18));
 		titleLabel1.setAlignmentX(CENTER_ALIGNMENT);
 
 		// Form
@@ -67,7 +68,7 @@ public class FindFrame extends JFrame implements ActionListener, TableModelListe
 		form.add(formLabel, BorderLayout.LINE_START);
 		form.add(textField, BorderLayout.CENTER);
 		form.add(btnFind, BorderLayout.LINE_END);
-		Dimension size = new Dimension(700, 50);
+		Dimension size = new Dimension(600, 50);
 		form.setMaximumSize(size);
 		form.setPreferredSize(size);
 		form.setMinimumSize(size);
@@ -75,10 +76,12 @@ public class FindFrame extends JFrame implements ActionListener, TableModelListe
 		JPanel panelTable = new JPanel();
 		panelTable.setBackground(Color.black);
 
-		String column[] = { "STT", "Slag", "Nghĩa" };
+		String column[] = { "#", "Slag Word", "Ý Nghĩa" };
 
 		jt = new JTable(new DefaultTableModel(column, 0));
 		jt.setRowHeight(30);
+                JTableHeader header = jt.getTableHeader();
+                header.setFont(new Font("Georgia Bold", Font.PLAIN, 20));
 		model = (DefaultTableModel) jt.getModel();
 		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
 		centerRenderer.setHorizontalAlignment(JLabel.CENTER);
@@ -86,6 +89,8 @@ public class FindFrame extends JFrame implements ActionListener, TableModelListe
 		jt.getColumnModel().getColumn(1).setCellRenderer(centerRenderer);
 		jt.getColumnModel().getColumn(2).setCellRenderer(centerRenderer);
 		jt.getModel().addTableModelListener(this);
+                jt.setGridColor(Color.orange);
+                jt.setCellSelectionEnabled(true);
 		JScrollPane sp = new JScrollPane(jt);
 		panelTable.setLayout(new GridLayout(1, 1));
 		panelTable.add(sp);
@@ -95,6 +100,7 @@ public class FindFrame extends JFrame implements ActionListener, TableModelListe
 		btnBack = new JButton("Trở về");
 		btnBack.setFocusable(false);
 		bottomPanel.add(btnBack);
+                btnBack.setForeground(Color.red);
 		btnBack.addActionListener(this);
 		btnBack.setAlignmentX(CENTER_ALIGNMENT);
 
@@ -102,7 +108,6 @@ public class FindFrame extends JFrame implements ActionListener, TableModelListe
 		con.add(Box.createRigidArea(new Dimension(0, 10)));
 		con.add(titleLabel);
 		con.add(Box.createRigidArea(new Dimension(0, 10)));
-		con.add(titleLabel1);
 		con.add(Box.createRigidArea(new Dimension(0, 10)));
 		con.add(form);
 		con.add(Box.createRigidArea(new Dimension(0, 10)));
@@ -126,22 +131,12 @@ public class FindFrame extends JFrame implements ActionListener, TableModelListe
 				return;
 			}
 			Object[] options = { "Tìm kiếm theo slang word", "Tìm kiếm theo definition" };
-			int n = JOptionPane.showOptionDialog(this, "Chọn chế độ ", "Chọn Chế Độ Tìm",
+			int n = JOptionPane.showOptionDialog(this, "Bạn muốn tìm kiếm theo chế độ nào? ", "Chế độ tìm",
 					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
 			String[][] temp = null;
 			if (n == 0) {
 				this.clearTable();
-				long startTime = System.currentTimeMillis();
 				temp = slangW.getMeaning(key);
-				long endTime = System.currentTimeMillis();
-				long timeElapsed = endTime - startTime;
-				if (temp != null)
-					titleLabel1.setText("Thời gian thực thi ms(" + temp.length + " Kết quả ): "
-							+ String.valueOf(timeElapsed) + " ms");
-				else {
-					titleLabel1.setText("Không tìm thấy");
-					return;
-				}
 				result = temp;
 				for (int i = 0; i < result.length; i++) {
 					String ss[] = result[i];
@@ -150,17 +145,7 @@ public class FindFrame extends JFrame implements ActionListener, TableModelListe
 
 			} else if (n == 1) {
 				this.clearTable();
-				long startTime = System.currentTimeMillis();
 				temp = slangW.findDefinition(key);
-				long endTime = System.currentTimeMillis();
-				long timeElapsed = endTime - startTime;
-				if (temp != null)
-					titleLabel1.setText("Thời gian thực thi ms(" + temp.length + " Kết quả ): "
-							+ String.valueOf(timeElapsed) + " ms");
-				else {
-					titleLabel1.setText("Không tìm thấy");
-					return;
-				}
 				result = temp;
 				for (int i = 0; i < result.length; i++) {
 					String ss[] = result[i];

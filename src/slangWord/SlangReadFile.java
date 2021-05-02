@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package slangWord;
 
 import java.io.File;
@@ -16,10 +11,6 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeMap;
 
-/**
- *
- * @author apple
- */
 public class SlangReadFile {
     private TreeMap<String, List<String>> map = new TreeMap<>();
     private static SlangReadFile obj = new SlangReadFile();
@@ -32,9 +23,9 @@ public class SlangReadFile {
 	try {
             String current = new java.io.File(".").getCanonicalPath();
             System.out.println("Current dir:" + current);
-            FILE_SLANG = current + "\\" + FILE_SLANG;
-            FILE_ORIGINAL_SLANG = current + "\\" + FILE_ORIGINAL_SLANG;
-            FILE_HISTORY_SLANG = current + "\\" + FILE_HISTORY_SLANG;
+            FILE_SLANG = current + "/" + FILE_SLANG;
+            FILE_ORIGINAL_SLANG = current + "/" + FILE_ORIGINAL_SLANG;
+            FILE_HISTORY_SLANG = current + "/" + FILE_HISTORY_SLANG;
             readFile(FILE_SLANG);
             
         } catch (Exception e) {
@@ -62,7 +53,7 @@ public class SlangReadFile {
         String temp = scanner.next();
         String[] part = temp.split("\n");
         int i = 0;
-        int flag = 0;
+        
         stringLength = 0;
         while (scanner.hasNext()) {
             List<String> meaning = new ArrayList<String>();
@@ -73,10 +64,8 @@ public class SlangReadFile {
                 meaning = map.get(slag);
             }
             if (part[0].contains("|")) {
-                System.out.println(part[0]);
                 String[] d = (part[0]).split("\\|");
                 for (int ii = 0; ii < d.length; ii++)
-                    System.out.println(d[ii]);
                     Collections.addAll(meaning, d);
                     stringLength += d.length - 1;
             } else {
@@ -126,14 +115,12 @@ public class SlangReadFile {
             s[i][1] = (String) slagList[index];
             List<String> meaning = map.get(slagList[index]);
             s[i][2] = meaning.get(0);
-            System.out.println(s[i][0] + "\t" + s[i][1] + "\t" + s[i][2]);
             for (int j = 1; j < meaning.size(); j++) {
                 if (i < stringLength)
                     i++;
                 s[i][0] = String.valueOf(i);
                 s[i][1] = (String) slagList[index];
                 s[i][2] = meaning.get(j);
-                System.out.println(s[i][0] + "\t" + s[i][1] + "\t" + s[i][2]);
             }
             index++;
         }
@@ -215,5 +202,69 @@ public class SlangReadFile {
         }
         return false;
     }
+    
+    //FindFrame Tham khảo từ internet 50%
+    public String[][] findDefinition(String query) {
+        List<String> keyList = new ArrayList<>();
+        List<String> meaningList = new ArrayList<>();
+        for (Entry<String, List<String>> entry : map.entrySet()) {
+            List<String> meaning = entry.getValue();
+                for (int i = 0; i < meaning.size(); i++) {
+                    if (meaning.get(i).toLowerCase().contains(query.toLowerCase())) {
+                        keyList.add(entry.getKey());
+                        meaningList.add(meaning.get(i));
+                    }
+                }
+        }
+        int size = keyList.size();
+        String s[][] = new String[size][3];
+
+        for (int i = 0; i < size; i++) {
+            s[i][0] = String.valueOf(i);
+            s[i][1] = keyList.get(i);
+            s[i][2] = meaningList.get(i);
+        }
+        return s;
+    }
+    
+    //Tham khảo từ internet 30%
+    public void saveHistory(String slag, String meaning) throws Exception {
+        File file1 = new File(FILE_HISTORY_SLANG);
+        FileWriter fr = new FileWriter(file1, true);
+        fr.write(slag + "`" + meaning + "\n");
+        fr.close();
+    }
+    
+    //Tham khảo từ internet 30%
+    public String[][] readHistory() {
+        List<String> his = new ArrayList<>();
+        List<String> hisD = new ArrayList<>();
+        try {
+            Scanner scanner = new Scanner(new File(FILE_HISTORY_SLANG));
+            scanner.useDelimiter("`");
+            String temp = scanner.next();
+            String[] part = scanner.next().split("\n");
+            his.add(temp);
+            hisD.add(part[0]);
+            while (scanner.hasNext()) {
+                temp = part[1];
+                part = scanner.next().split("\n");
+                his.add(temp);
+                hisD.add(part[0]);
+            }
+                scanner.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        
+            int size = his.size();
+            String str[][] = new String[size][3];
+            for (int i = 0; i < size; i++) {
+                str[size - i - 1][0] = String.valueOf(size - i);
+                str[size - i - 1][1] = his.get(i);
+                str[size - i - 1][2] = hisD.get(i);
+            }
+            return str;
+	}
 
 }

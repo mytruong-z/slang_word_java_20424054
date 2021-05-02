@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.JTableHeader;
 
 public class HistoryFrame extends JFrame implements ActionListener {
 	JButton btnReturn, btnExit;
@@ -26,21 +27,25 @@ public class HistoryFrame extends JFrame implements ActionListener {
 	HistoryFrame() {
 		Container con = this.getContentPane();
 
-		JLabel historyLabel = new JLabel();
-		historyLabel.setText("Lịch Sử Tìm Kiếm");
-		historyLabel.setForeground(Color.green);
-		historyLabel.setFont(new Font("Gill Sans MT", Font.PLAIN, 35));
-		historyLabel.setAlignmentX(CENTER_ALIGNMENT);
+		JLabel hisLabel = new JLabel();
+		hisLabel.setText("Lịch Sử Tìm Kiếm");
+		hisLabel.setForeground(Color.green);
+		hisLabel.setFont(new Font("Georgia Bold", Font.PLAIN, 35));
+		hisLabel.setAlignmentX(CENTER_ALIGNMENT);
 		
 		JPanel panelTable = new JPanel();
 		panelTable.setBackground(Color.black);
 
 		String data[][] = slangW.readHistory();
-		String column[] = { "STT", "Slang Word", "Definition" };
+		String column[] = { "#", "Slang Word", "Definition" };
 		JTable jt = new JTable(data, column);
 		jt.setRowHeight(30);
+                JTableHeader header = jt.getTableHeader();
+                header.setFont(new Font("Georgia Bold", Font.PLAIN, 20));
 		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
 		centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+                jt.setGridColor(Color.orange);
+                jt.setCellSelectionEnabled(true);
 		jt.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
 		jt.getColumnModel().getColumn(1).setCellRenderer(centerRenderer);
 
@@ -52,16 +57,14 @@ public class HistoryFrame extends JFrame implements ActionListener {
 		JPanel bottomPanel = new JPanel();
 		btnExit = new JButton("Trở Về");
 		btnExit.addActionListener(this);
-		Dimension size2 = new Dimension(700, 50);
-		bottomPanel.setMaximumSize(size2);
-		bottomPanel.setPreferredSize(size2);
-		bottomPanel.setMinimumSize(size2);
-		bottomPanel.setLayout(new GridLayout(1, 2));
-		bottomPanel.add(btnReturn);
+                btnExit.setFocusable(false);
+                btnExit.setForeground(Color.RED);
+		btnExit.addActionListener(this);
+		btnExit.setAlignmentX(CENTER_ALIGNMENT);
 		bottomPanel.add(btnExit);
 
 		con.setLayout(new BoxLayout(con, BoxLayout.Y_AXIS));
-		con.add(historyLabel);
+		con.add(hisLabel);
 		con.add(Box.createRigidArea(new Dimension(0, 50)));
 		con.add(panelTable);
 		con.add(Box.createRigidArea(new Dimension(0, 50)));

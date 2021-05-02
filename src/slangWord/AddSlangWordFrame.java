@@ -47,7 +47,7 @@ public class AddSlangWordFrame extends JFrame implements ActionListener {
 		JPanel meaningPanel = new JPanel();
 		SpringLayout layout1 = new SpringLayout();
 		meaningPanel.setLayout(layout1);
-		JLabel labelForMeaning = new JLabel("Nghĩa: ");
+		JLabel labelForMeaning = new JLabel("Ý Nghĩa: ");
 		labelForMeaning.setPreferredSize(new Dimension(100, 20));
 		textFieldMeaning = new JTextField("", 20);
 		meaningPanel.add(labelForMeaning);
@@ -68,12 +68,12 @@ public class AddSlangWordFrame extends JFrame implements ActionListener {
 		JPanel bottomPanel = new JPanel();
 		btnBack = new JButton("Trở Về ");
 		btnBack.setFocusable(false);
-                btnBack.setBackground(Color.RED);
+                btnBack.setForeground(Color.RED);
 		btnBack.addActionListener(this);
 		btnBack.setAlignmentX(CENTER_ALIGNMENT);
 		btnAdd = new JButton("Thêm");
 		btnAdd.setFocusable(false);
-                btnAdd.setBackground(Color.GREEN);
+                btnAdd.setForeground(Color.GREEN);
 		btnAdd.addActionListener(this);
 		btnAdd.setAlignmentX(CENTER_ALIGNMENT);
 		bottomPanel.add(btnBack);

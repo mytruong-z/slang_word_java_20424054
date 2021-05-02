@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.table.*;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -35,28 +36,37 @@ public class ListFrame extends JFrame implements ActionListener, TableModelListe
 		JLabel titleLabel = new JLabel();
 		titleLabel.setText("Danh Sách Slang Words");
 		titleLabel.setForeground(Color.blue);
-		titleLabel.setFont(new Font("Gill Sans MT", Font.PLAIN, 35));
+		titleLabel.setFont(new Font("Georgia Bold", Font.PLAIN, 35));
 		titleLabel.setAlignmentX(CENTER_ALIGNMENT);
 
 		// Label
 		JLabel resultLabel = new JLabel();
 		resultLabel.setForeground(Color.black);
-		resultLabel.setFont(new Font("Gill Sans MT", Font.PLAIN, 18));
+		resultLabel.setFont(new Font("Georgia Bold", Font.PLAIN, 18));
 		resultLabel.setAlignmentX(CENTER_ALIGNMENT);
 
 		JPanel panelTable = new JPanel();
 		panelTable.setBackground(Color.black);
 		String data[][] = slangW.getData();
 		dataCopy = slangW.getData();
-		String column[] = { "STT", "Slag Word", "Nghĩa" };
-		resultLabel.setText("Tìm được " + data.length + " slang words");
+		String column[] = { "#", "Slag Word", "Ý Nghĩa" };
 		jt = new JTable(data, column);
+                JTableHeader header = jt.getTableHeader();
+                header.setFont(new Font("Georgia Bold", Font.PLAIN, 20));
+                jt.setGridColor(Color.orange);
+                jt.setCellSelectionEnabled(true);
+               
 		jt.setRowHeight(30);
 		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
 		centerRenderer.setHorizontalAlignment(JLabel.CENTER);
 		jt.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
 		jt.getColumnModel().getColumn(1).setCellRenderer(centerRenderer);
 		jt.getColumnModel().getColumn(2).setCellRenderer(centerRenderer);
+                
+                jt.getColumnModel().getColumn(0).setPreferredWidth(10);
+
+                jt.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
+
 		jt.getModel().addTableModelListener(this);
 
 		JScrollPane sp = new JScrollPane(jt);
@@ -66,7 +76,7 @@ public class ListFrame extends JFrame implements ActionListener, TableModelListe
 		JPanel bottomPanel = new JPanel();
 		btnBack = new JButton("Trở Về ");
 		btnBack.addActionListener(this);
-		btnBack.setFocusable(false);
+		btnBack.setForeground(Color.red);
 		btnBack.setAlignmentX(CENTER_ALIGNMENT);
 		bottomPanel.add(btnBack);
 
@@ -74,7 +84,6 @@ public class ListFrame extends JFrame implements ActionListener, TableModelListe
 		con.add(Box.createRigidArea(new Dimension(0, 10)));
 		con.add(titleLabel);
 		con.add(Box.createRigidArea(new Dimension(0, 20)));
-		con.add(resultLabel);
 		con.add(Box.createRigidArea(new Dimension(0, 20)));
 		con.add(panelTable);
 		con.add(Box.createRigidArea(new Dimension(0, 20)));

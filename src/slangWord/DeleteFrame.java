@@ -22,6 +22,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 public class DeleteFrame extends JFrame implements ActionListener, ListSelectionListener {
 	JButton btnBack;
@@ -50,13 +51,16 @@ public class DeleteFrame extends JFrame implements ActionListener, ListSelection
 		JPanel panelTable = new JPanel();
 		panelTable.setBackground(Color.black);
 		data = slangW.getData();
-		String column[] = { "#", "Slag", "Nghĩa" };
-		resultLabel.setText("Tìm thấy " + data.length + " slang words");
+		String column[] = { "#", "Slag", "Ý Nghĩa" };
 		jt = new JTable(new DefaultTableModel(column, 0));
+                JTableHeader header = jt.getTableHeader();
+                header.setFont(new Font("Georgia Bold", Font.PLAIN, 20));
 		model = (DefaultTableModel) jt.getModel();
 		jt.setRowHeight(30);
 		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
 		centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+                jt.setGridColor(Color.orange);
+                jt.setCellSelectionEnabled(true);
 		jt.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
 		jt.getColumnModel().getColumn(1).setCellRenderer(centerRenderer);
 		jt.getColumnModel().getColumn(2).setCellRenderer(centerRenderer);
@@ -81,7 +85,6 @@ public class DeleteFrame extends JFrame implements ActionListener, ListSelection
 		con.add(Box.createRigidArea(new Dimension(0, 10)));
 		con.add(titleLabel);
 		con.add(Box.createRigidArea(new Dimension(0, 20)));
-		con.add(resultLabel);
 		con.add(Box.createRigidArea(new Dimension(0, 20)));
 		con.add(panelTable);
 		con.add(Box.createRigidArea(new Dimension(0, 20)));
