@@ -103,7 +103,7 @@ public class AddSlangWordFrame extends JFrame implements ActionListener {
 			String slag = textFieldSlang.getText();
 			String meaning = textFieldMeaning.getText();
 			if (slag.isEmpty() || meaning.isEmpty()) {
-				JOptionPane.showMessageDialog(this, "Không Tồn Tại", "Thông Báo Lỗi", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(this, "Vui Lòng Điền Đầy Đủ Các Trường", "Thông Báo Lỗi", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
 			System.out.println(slag + " = " + meaning);

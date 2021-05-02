@@ -38,6 +38,7 @@ public class HistoryFrame extends JFrame implements ActionListener {
 
 		String data[][] = slangW.readHistory();
 		String column[] = { "#", "Slang Word", "Definition" };
+                //https://shareprogramming.net/huong-dan-su-dung-jtable-trong-java-swing/
 		JTable jt = new JTable(data, column);
 		jt.setRowHeight(30);
                 JTableHeader header = jt.getTableHeader();

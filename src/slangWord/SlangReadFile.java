@@ -117,7 +117,7 @@ public class SlangReadFile {
             List<String> meaning = map.get(slagList[index]);
             s[i][2] = meaning.get(0);
             for (int j = 1; j < meaning.size(); j++) {
-                if (i < stringLength)
+                if (i < stringLength - 1)
                     i++;
                 s[i][0] = String.valueOf(i);
                 s[i][1] = (String) slagList[index];

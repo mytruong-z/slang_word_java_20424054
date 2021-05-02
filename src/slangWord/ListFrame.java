@@ -50,7 +50,9 @@ public class ListFrame extends JFrame implements ActionListener, TableModelListe
 		String data[][] = slangW.getData();
 		dataCopy = slangW.getData();
 		String column[] = { "#", "Slag Word", "Ý Nghĩa" };
-		jt = new JTable(data, column);
+		
+                //https://shareprogramming.net/huong-dan-su-dung-jtable-trong-java-swing/
+                jt = new JTable(data, column);
                 JTableHeader header = jt.getTableHeader();
                 header.setFont(new Font("Georgia Bold", Font.PLAIN, 20));
                 jt.setGridColor(Color.orange);

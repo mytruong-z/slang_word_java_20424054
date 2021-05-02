@@ -77,7 +77,7 @@ public class FindFrame extends JFrame implements ActionListener, TableModelListe
 		panelTable.setBackground(Color.black);
 
 		String column[] = { "#", "Slag Word", "Ý Nghĩa" };
-
+                //https://shareprogramming.net/huong-dan-su-dung-jtable-trong-java-swing/
 		jt = new JTable(new DefaultTableModel(column, 0));
 		jt.setRowHeight(30);
                 JTableHeader header = jt.getTableHeader();
